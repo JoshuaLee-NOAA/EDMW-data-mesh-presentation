@@ -40,33 +40,32 @@ export const TitleSlide: React.FC<TitleSlideProps> = ({ data }) => {
           </motion.div>
         )}
 
-        {/* Main Fisheries Brand Logo (fisheries.png) */}
+        {/* titleSlide.svg logo (bumped up size) */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.15, duration: 0.4 }}
-          className="flex items-center justify-center shrink-0 h-16 sm:h-20 md:h-24 min-h-[64px] w-auto relative mb-3 sm:mb-4"
+          className="flex items-center justify-center shrink-0 h-24 sm:h-32 md:h-40 w-auto relative mb-6 sm:mb-8"
         >
-          {/* Embedded base64 data URI: 100% immune to network disconnection, throttling, and remount race conditions */}
           <img
             ref={imgRef}
             src={data.logoPath || FISHERIES_LOGO_DATA_URI}
             alt="NOAA Fisheries Logo"
-            width={380}
-            height={162}
-            className="h-16 sm:h-20 md:h-24 w-auto max-w-full object-contain shrink-0"
+            width={480}
+            height={200}
+            className="h-24 sm:h-32 md:h-40 w-auto object-contain shrink-0"
             loading="eager"
             decoding="sync"
             onError={handleError}
           />
         </motion.div>
 
-        {/* Coral Animated Accent Line - matches exact width of the logo */}
+        {/* Coral Animated Accent Line - matched to new width */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
-          className="w-[150px] sm:w-[188px] md:w-[224px] h-1.5 bg-gradient-to-r from-coral via-coral-hover to-skygold rounded-full mb-8 origin-center"
+          className="w-[200px] sm:w-[260px] h-1.5 bg-gradient-to-r from-coral via-coral-hover to-skygold rounded-full mb-8 origin-center"
         />
 
         {/* Title */}
@@ -74,7 +73,7 @@ export const TitleSlide: React.FC<TitleSlideProps> = ({ data }) => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-2xl sm:text-4xl md:text-5xl font-light text-slate-900 tracking-tight leading-tight sm:leading-tight mb-4"
+          className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-900 tracking-tight leading-tight sm:leading-tight mb-4"
         >
           {data.title}
         </motion.h1>
@@ -85,10 +84,30 @@ export const TitleSlide: React.FC<TitleSlideProps> = ({ data }) => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.38, duration: 0.5 }}
-            className="text-sm sm:text-lg md:text-xl text-slate-600 font-normal max-w-2xl mb-10 leading-relaxed"
+            className="text-sm sm:text-lg md:text-xl text-slate-600 font-normal max-w-2xl mb-8 leading-relaxed"
           >
             {data.subtitle}
           </motion.p>
+        )}
+
+        {/* Presenter Avatar (moved below title/subtitle, made smaller) */}
+        {data.avatarPath && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="mb-8"
+          >
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-200 mx-auto shadow-sm">
+              <img
+                src={data.avatarPath}
+                alt={data.author || "Presenter"}
+                width={64}
+                height={64}
+                className="object-cover w-full h-full bg-slate-100"
+              />
+            </div>
+          </motion.div>
         )}
 
         {/* Presenter Metadata & Tags Footer Cluster */}

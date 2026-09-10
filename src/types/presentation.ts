@@ -44,6 +44,7 @@ export interface TitleSlideData extends BaseSlide {
   type: "title";
   author?: string;
   authorRole?: string;
+  avatarPath?: string;
   date?: string;
   tags?: string[];
   logoPath?: string;
