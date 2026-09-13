@@ -18,10 +18,18 @@ export interface MetricCard {
 export interface FeatureCard {
   id: string;
   title: string;
-  description: string;
+  description: string | string[];
   iconName: string;
   badge?: string;
   accentColor?: "seagrass" | "coral" | "skygold" | "noaa";
+  patternVisual?: "warehouse" | "lake" | "mesh";
+  imageUrl?: string;
+  era?: string;
+  citation?: string;
+  isHighlighted?: boolean;
+  isVisualColumn?: boolean;
+  imageStack?: { url: string; caption: string }[];
+  diagramId?: string;
 }
 
 export interface CodeSnippet {
@@ -38,6 +46,7 @@ export interface BaseSlide {
   subtitle?: string;
   category?: string;
   notes?: string;
+  titleImageUrl?: string;
 }
 
 export interface TitleSlideData extends BaseSlide {
@@ -52,9 +61,13 @@ export interface TitleSlideData extends BaseSlide {
 
 export interface SplitSlideData extends BaseSlide {
   type: "split";
+  description?: string | string[];
   bullets?: string[];
-  mediaType?: "image" | "card";
+  emphasizeBulletIndices?: number[];
+  stats?: { label: string; value: string }[];
+  mediaType?: "image" | "card" | "diagram";
   mediaUrl?: string;
+  mediaDiagramId?: string;
   mediaCaption?: string;
   mediaCardTitle?: string;
   mediaCardItems?: { label: string; value: string }[];
