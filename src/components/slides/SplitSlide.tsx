@@ -8,6 +8,7 @@ import MandateVenn from "@/components/diagrams/MandateVenn";
 import FourPrinciplesIntegration from "@/components/diagrams/FourPrinciplesIntegration";
 import DomainDecompositionDiagram from "@/components/diagrams/DomainDecompositionDiagram";
 import EMArchitectureStacked from "@/components/diagrams/EMArchitectureStacked";
+import ResourceHierarchy from "@/components/diagrams/ResourceHierarchy";
 
 interface SplitSlideProps {
   data: SplitSlideData;
@@ -155,6 +156,10 @@ export const SplitSlide: React.FC<SplitSlideProps> = ({ data }) => {
           ) : data.mediaType === "diagram" && data.mediaDiagramId === "EMArchitectureStacked" ? (
             <div className="w-full h-full min-h-[400px] flex flex-col items-center justify-center relative py-4">
               <EMArchitectureStacked />
+            </div>
+          ) : data.mediaType === "diagram" && data.mediaDiagramId === "ResourceHierarchy" ? (
+            <div className="w-full h-full min-h-[400px] flex flex-col items-center justify-center relative py-4">
+              <ResourceHierarchy />
             </div>
           ) : data.mediaType === "image" && data.mediaUrl ? (
             <div className="w-full h-full flex flex-col justify-center items-center bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs relative overflow-hidden">
