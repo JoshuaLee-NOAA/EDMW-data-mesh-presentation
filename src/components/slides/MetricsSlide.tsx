@@ -31,8 +31,14 @@ export const MetricsSlide: React.FC<MetricsSlideProps> = ({ data }) => {
         </p>
       )}
 
-      {/* Metrics Cards Grid (1-column on mobile, 3-column on desktop) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-4">
+      {/* Metrics Cards Grid (1-column on mobile, up to 4-column on desktop) */}
+      <div 
+        className={`grid grid-cols-1 gap-6 my-4 ${
+          data.metrics.length === 4 
+            ? "sm:grid-cols-2 lg:grid-cols-4" 
+            : "md:grid-cols-3"
+        }`}
+      >
         {data.metrics.map((metric, idx) => {
           // Determine badge color class
           let badgeClass = "bg-seagrass-light text-seagrass border-seagrass/30";

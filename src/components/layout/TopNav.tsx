@@ -52,7 +52,7 @@ export const TopNav: React.FC<TopNavProps> = ({
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 relative">
         {/* Left: Logo & Presentation Short Title */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
           <div className="w-8 h-8 sm:w-9 sm:h-9 max-w-[36px] max-h-[36px] shrink-0 flex items-center justify-center overflow-hidden">
@@ -67,16 +67,25 @@ export const TopNav: React.FC<TopNavProps> = ({
             />
           </div>
           <div className="hidden min-[400px]:block text-left min-w-0">
-            <span className="text-xs font-medium uppercase tracking-wider text-noaa-blue block">
-              NOAA Fisheries
-            </span>
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="text-xs font-medium uppercase tracking-wider text-noaa-blue">
+                NOAA Fisheries
+              </span>
+            </div>
             <h1 className="text-xs sm:text-sm font-semibold text-slate-800 truncate max-w-[140px] sm:max-w-[220px] md:max-w-[320px]">
               {title}
             </h1>
           </div>
         </div>
 
-        {/* Center/Right: Dropdown Selector & Dev Tools Toggle Cluster */}
+        {/* Center: Absolute position for exact centering */}
+        <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center pointer-events-none">
+          <span className="px-2.5 py-1 bg-seagrass/10 border border-seagrass/20 text-[10px] font-bold text-seagrass uppercase tracking-widest rounded-full shadow-sm">
+            Georgetown Capstone
+          </span>
+        </div>
+
+        {/* Right: Dropdown Selector & Dev Tools Toggle Cluster */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Global Navigation Dropdown Selector */}
           <div className="relative shrink-0" ref={dropdownRef}>
